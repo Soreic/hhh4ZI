@@ -199,7 +199,7 @@ simHHH4ZI <- function(ar,     # lambda_it (nTime x nUnits matrix)
   for(t in seq_len(nTime)){
     #browser()
     if (timeDependentWeights) neWt <- neW[,,t]
-    gamma[t,] <- plogis(if(lag.gamma[1] > 0) {
+    gamma[t,] <- plogis(if(isTRUE(lag.gamma[1] > 0)) {
       gamma_end[t,] +  (if(length(lag.gamma) >1)
         colSums(y[nStart+t-lag.gamma,] * gamma_ar) else
           y[nStart+t-lag.gamma,] * gamma_ar)
